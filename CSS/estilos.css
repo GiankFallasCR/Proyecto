@@ -18,9 +18,9 @@ body{
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 22px 16px;
   text-decoration: none;
-  font-size: 27px;
+  font-size: 28px;
 }
 
 .navbar a:hover {
@@ -38,32 +38,43 @@ body{
   padding-left: 70%;
 }
 
-#crvideo {
+.container {
+  height: 100%;
   position: relative;
-  object-fit: cover;
+}
+
+.container_section1{
+  /* Take full size */
   height: 100%;
   width: 100%;
+  /* Stick to the top */
+  position: sticky;
+  top: 0;
+}
+
+#crvideo {
+  position: absolute;
+  object-fit: cover;
+  height: 92%;
+  width: 100%;
+  z-index: -100;
 }
 
 .field {
   display:flex;
-  position:realtive;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   margin:5em auto;
   width:70%;
   flex-direction:row;
-  box-shadow:
-   1px 1px 0 rgb(22, 160, 133),
-   2px 2px 0 rgb(22, 160, 133),
-   3px 3px 0 rgb(22, 160, 133),
-   4px 4px 0 rgb(22, 160, 133),
-   5px 5px 0 rgb(22, 160, 133),
-   6px 6px 0 rgb(22, 160, 133),
-   7px 7px 0 rgb(22, 160, 133)
-  ;
+  padding-top: 10%;
+  z-index: -100;
 }
 
 .field>input[type=text],
 .field>button {
+  
   display:block;
   font:1.2em 'Montserrat Alternates';
 }
@@ -81,14 +92,22 @@ body{
   border:none;
 }
 
+.wave {
+  position: relative;
+  padding-top: 10%;
+  z-index: -100;
+}
+
 label, a{
   color: white;
 }
 
 .mapa {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: -100;
 }
 

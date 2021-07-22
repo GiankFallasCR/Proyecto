@@ -13,13 +13,6 @@
 </head>
 
 <body>
-
-    <video id="crvideo">
-        <source src="video/CostaRican.mp4" type="video/mp4">
-        <source src="Video/CostaRican.mp4" type="video/ogg">
-    </video>
-
-
     <div class="navbar">
         <!--<img id="logo" src="Img\quetzal.jpg" class="d-inline-block align-top" alt="">-->
         <div id="menu">
@@ -30,20 +23,24 @@
 
     </div>
 
-    <div class="field" id="searchform">
-        <input type="text" id="searchterm" placeholder="A dónde quieres ir?" />
-        <button type="button" id="search">Buscar!</button>
+    <div class="container">
+        <section class="container__section1">
+            <video id="crvideo">
+                <source src="video/CostaRican.mp4" type="video/mp4">
+                <source src="Video/CostaRican.mp4" type="video/ogg">
+            </video>
+            <div class="field" id="searchform">
+                <input type="text" id="searchterm" placeholder="A dónde quieres ir?" />
+                <button type="button" id="search">Buscar!</button>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#1ABC9C" fill-opacity="1"
+                    d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,245.3C672,256,768,256,864,234.7C960,213,1056,171,1152,165.3C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                </path>
+            </svg>
+        </section>
+
     </div>
-
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#1ABC9C" fill-opacity="1"
-            d="M0,64L26.7,101.3C53.3,139,107,213,160,229.3C213.3,245,267,203,320,197.3C373.3,192,427,224,480,218.7C533.3,213,587,171,640,160C693.3,149,747,171,800,186.7C853.3,203,907,213,960,208C1013.3,203,1067,181,1120,197.3C1173.3,213,1227,267,1280,277.3C1333.3,288,1387,256,1413,240L1440,224L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z">
-        </path>
-    </svg>
-
-    <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-
-
 
     <div class="mapa">
         <br>
@@ -59,6 +56,10 @@
         <a href="https://www.google.com.gt/maps/@<?php echo $valor1 ?>,<?php echo $valor2 ?>,15z"
             target="_blank">Parametrizado</a>
     </div>
+
+    <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+
+
     <br>
     <ul>
         <li>
