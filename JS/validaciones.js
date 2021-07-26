@@ -62,10 +62,9 @@ function validaciones() {
     setCookie("Apellido2", apellido2, 30);
 
     //Almacena la información del year y comentario en variables de sesion
-    sessionStorage.setItem("Cedula", cedula);
-    sessionStorage.setItem("Correo", correo);
-    sessionStorage.setItem("Telefono", telefono);
-    sessionStorage.setItem("Email", email);
+    sessionStorage.setItem("cedula", cedula);
+    sessionStorage.setItem("telefono", telefono);
+    sessionStorage.setItem("email", email);
     sessionStorage.setItem("idioma", idioma);
 
     //Almacena la información del día y destino en localStorage

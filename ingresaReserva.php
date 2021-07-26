@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ViajiTico<</title>
 </head>
 <body>
   <!-- The flexible grid (content) -->
@@ -47,33 +47,42 @@
         return $tmp;
       }
 
-      $nombrePaciente = recoge("nombrePaciente");
-      $idDoctor   = recoge("idDoctor");
+      $nombrePersona = recoge("nombrePersona");
+      $apellido1 = recoge("apellido1");
+      $apellido2 = recoge("apellido2");
+      $cedula = recoge("cedula");
+      $apellido2 = recoge("apellido2");
+      $idDestino   = recoge("idDestino");
       $idDia        = recoge("idDia");
-      $hora         = recoge("hora");
-      $padecimiento       = recoge("padecimiento");
+      $idMes       = recoge("idMes");
+      $year         = recoge("year");
+      $cantidad = recoge("cantidad");
+      $comentario       = recoge("comentario");
 
-      $nombrePacienteOk  = false;
-      $idDoctorOk    = false;
+      $nombrePersonaOk  = false;
+      $apellido1Ok  = false;
+      $apellido2Ok  = false;
+      $idDestinoOk    = false;
       $idDiaOk         = false;
-      $horaOk          = false;
-      $padecimientoOk        = false;
+      $idMesOk          = false;
+      $yearOk          = false;
+      $comentarioOk        = false;
 
-      if ($nombrePaciente == "") {
+      if ($nombrePersona == "") {
         print "  <p class=\"aviso\">No ha escrito el nombre del paciente.</p>\n";
         print "\n";
       } else {
-        $nombrePacienteOk = true;
+        $nombrePersonaOk = true;
       }
 
-      if ($idDoctor == "") {
+      if ($idDestino == "") {
         print "  <p class=\"aviso\">No ha seleccionado al Doctor.</p>\n";
         print "\n";
       } elseif (!is_numeric($idDoctor)) {
         print "  <p class=\"aviso\">El dato del Doctor no es válido.</p>\n";
         print "\n";
       } else {
-        $idDoctorOk = true;
+        $idDestinoOk = true;
       }
 
       if ($idDia == "") {
@@ -176,20 +185,19 @@
         echo InsertaDatos($nombrePaciente, $idDoctor, $idDia, $hora, $padecimiento);
       }
 
+      // crear conexion con oracle
       function Conecta()
       {
-        $elServidor = "localhost";
-        $elUsuario = "root";
-        $elPassword = "";
-        $laBD = "Consultorio";
-        $laconexion = new mysqli($elServidor, $elUsuario, $elPassword, $laBD);
-
-        if ($laconexion->connect_error) {
-          die("Error al Conectar con la BD: " . $laconexion->connect_error);
-        }
-        //echo "Conexion exitosa <br>";
-
-        return $laconexion;
+        $conexion = oci_connect("ESTUDIANTE", "FIDE", "localhost/orcl"); 
+ 
+        if (!$conexion) {    
+          $m = oci_error();    
+          echo $m['message'], "n";    
+          exit; 
+        } else {    
+          echo "Conexión con éxito a Oracle!"; 
+          return $conexion;
+        } 
       }
 
       function InsertaDatos($pnombrePaciente, $pidDoctor, $pidDia, $phora, $ppadecimiento)
