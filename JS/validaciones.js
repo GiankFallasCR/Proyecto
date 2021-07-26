@@ -30,33 +30,51 @@ function validaciones() {
     var idMes = elComboMes.options[elComboMes.selectedIndex].value;
     var mes = elComboMes.options[elComboMes.selectedIndex].text;
 
-    //Obtiene la hora seleccionada.
-    var hora = document.getElementsByName('hora');
-    var valHora;
-    for (var i = 0, len = hora.length; i < len; i++) {
-        if (hora[i].checked) { // radio checked?
-            valHora = hora[i].value; // if so, hold its value in val
+    //Obtiene el year seleccionado.
+    var year = document.getElementsByName('year');
+    var valyear;
+    for (var i = 0, len = year.length; i < len; i++) {
+        if (year[i].checked) { // radio checked?
+            valyear = year[i].value; // if so, hold its value in val
             break; // and break out of for loop
         }
     }
 
-    //obtiene el dato del padecimiento
-    var padecimiento = document.getElementById('padecimiento').value;
+    //Obtiene el idioma seleccionado.
+    var idioma = document.getElementsByName('idioma');
+    var valIdioma;
+    for (var i = 0, len = idioma.length; i < len; i++) {
+        if (idioma[i].checked) { // radio checked?
+            valIdioma = idioma[i].value; // if so, hold its value in val
+            break; // and break out of for loop
+        }
+    }
+
+    //obtiene el dato del cometario
+    var comentario = document.getElementById('comentario').value;
 
     //Almacena la información de la persona en cookies
     setCookie("nombrePersona", nombrePersona, 30);
+    setCookie("Apellido1", apellido1, 30);
+    setCookie("Apellido2", apellido2, 30);
 
-    //Almacena la información de la hora y padecimient en variables de sesion
-    sessionStorage.setItem("Hora", hora);
-    sessionStorage.setItem("Padecimiento", padecimiento);
+    //Almacena la información del year y comentario en variables de sesion
+    sessionStorage.setItem("Cedula", cedula);
+    sessionStorage.setItem("Correo", correo);
+    sessionStorage.setItem("Telefono", telefono);
+    sessionStorage.setItem("Email", email);
+    sessionStorage.setItem("idioma", idioma);
 
-    //Almacena la información del día y doctor en localStorage
+    //Almacena la información del día y destino en localStorage
     localStorage.setItem("idDia", idDia);
     localStorage.setItem("dia", dia);
     localStorage.setItem("idMes", idMes);
     localStorage.setItem("mes", mes);
+    localStorage.setItem("Year", year);
     localStorage.setItem("idDestino", idDestino);
     localStorage.setItem("nombreDestino", nombreDestino);
+    localStorage.setItem("Comentario", comentario);
+    localStorage.setItem("Comentario", comentario);
 
     //Cuando se ejecuta un evento submit y el resultado de la función javaScript es true
     //La información se envía al servidor, caso contrario no se realiza el envió al servidor.aviso
