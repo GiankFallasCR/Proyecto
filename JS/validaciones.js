@@ -51,6 +51,9 @@ function validaciones() {
     }
 
     //obtiene el dato del cometario
+    var cantidad = document.getElementById('cantidad').value;
+
+    //obtiene el dato del cometario
     var comentario = document.getElementById('comentario').value;
 
     //Almacena la información de la persona en cookies
@@ -73,6 +76,7 @@ function validaciones() {
     localStorage.setItem("Year", year);
     localStorage.setItem("idDestino", idDestino);
     localStorage.setItem("nombreDestino", nombreDestino);
+    localStorage.setItem("Cantidad", cantidad);
     localStorage.setItem("Comentario", comentario);
 
     //Cuando se ejecuta un evento submit y el resultado de la función javaScript es true
