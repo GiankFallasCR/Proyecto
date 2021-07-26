@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!--<script language="JavaScript1.2">
+    <!--<link href="CSS/estilos.css" rel="stylesheet" />
+    <script language="JavaScript1.2">
         function UpdateCartQuantity() {
             document.cart_quantity.submit();
         }
@@ -18,6 +19,14 @@
 </head>
 
 <body>
+    <div class="navbar">
+        <div id="menu">
+            <a href="index.html">Inicio</a>
+            <a href="reservaciones.php">Reservaciones</a>
+            <a href="#contact">Contacto</a>
+        </div>
+    </div>
+
     <div class="row">
         <form method="post" action="ingresaCita.php" id="formTutorias" class="main">
             <strong><span id="reservaciones" style="font-family: Arial; font-size: 24pt">HACER UNA RESERVACION</span></strong><br />
