@@ -74,7 +74,6 @@ function validaciones() {
     localStorage.setItem("idDestino", idDestino);
     localStorage.setItem("nombreDestino", nombreDestino);
     localStorage.setItem("Comentario", comentario);
-    localStorage.setItem("Comentario", comentario);
 
     //Cuando se ejecuta un evento submit y el resultado de la función javaScript es true
     //La información se envía al servidor, caso contrario no se realiza el envió al servidor.aviso
