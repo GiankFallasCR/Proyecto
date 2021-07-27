@@ -51,7 +51,9 @@
       $apellido1 = recoge("apellido1");
       $apellido2 = recoge("apellido2");
       $cedula = recoge("cedula");
-      $apellido2 = recoge("apellido2");
+      $telefono = recoge("telefono");
+      $email = recoge("email");
+      $idioma= recoge("idioma");
       $idDestino   = recoge("idDestino");
       $idDia        = recoge("idDia");
       $idMes       = recoge("idMes");
@@ -60,13 +62,17 @@
       $comentario       = recoge("comentario");
 
       $nombrePersonaOk  = false;
-      $apellido1Ok  = false;
-      $apellido2Ok  = false;
-      $idDestinoOk    = false;
-      $idDiaOk         = false;
-      $idMesOk          = false;
-      $yearOk          = false;
-      $comentarioOk        = false;
+      $apellido1Ok   = false;
+      $apellido2Ok   = false;
+      $cedulaOk      = false;
+      $telefonoOk    = false;
+      $emailOk       = false;
+      $idiomaOk      = false;
+      $idDestinoOk   = false;
+      $idDiaOk       = false;
+      $idMesOk       = false;
+      $yearOk        = false;
+      $comentarioOk  = false;
 
       if ($nombrePersona == "") {
         print "  <p class=\"aviso\">No ha escrito el nombre del paciente.</p>\n";
@@ -78,7 +84,7 @@
       if ($idDestino == "") {
         print "  <p class=\"aviso\">No ha seleccionado al Doctor.</p>\n";
         print "\n";
-      } elseif (!is_numeric($idDoctor)) {
+      } elseif (!is_numeric($idDestino)) {
         print "  <p class=\"aviso\">El dato del Doctor no es válido.</p>\n";
         print "\n";
       } else {
@@ -91,55 +97,69 @@
       } elseif (!is_numeric($idDia)) {
         print "  <p class=\"aviso\">El dato del día no es válido.</p>\n";
         print "\n";
-      } elseif ($idDia < 1 || $idDia > 5) {
+      } elseif ($idDia < 1 || $idDia > 7) {
         print "  <p class=\"aviso\">El día es incorrecto.</p>\n";
         print "\n";
       } else {
         $idDiaOk = true;
       }
 
-      if ($hora == "") {
-        print "  <p class=\"aviso\">No ha indicado la hora.</p>\n";
+      if ($idMes == "") {
+        print "  <p class=\"aviso\">No ha seleccionado el mes.</p>\n";
         print "\n";
-      } elseif ($hora != "10" && $hora != "12" && $hora != "16" && $hora != "18") {
-        print "  <p class=\"aviso\">Por favor, indique la hora de la cita.</p>\n";
+      } elseif (!is_numeric($idMes)) {
+        print "  <p class=\"aviso\">El dato del mes no es válido.</p>\n";
         print "\n";
-      } else {
-        $horaOk = true;
-      }
-
-      if ($padecimiento == "") {
-        print "  <p class=\"aviso\">No ha escrito el padecimiento.</p>\n";
+      } elseif ($idMes < 1 || $idMes > 12) {
+        print "  <p class=\"aviso\">El mes es incorrecto.</p>\n";
         print "\n";
       } else {
-        $padecimientoOk = true;
+        $idMesOk = true;
       }
 
-      if ($nombrePacienteOk && $idDoctorOk && $idDiaOk && $horaOk && $padecimientoOk) {
+
+      if ($year == "") {
+        print "  <p class=\"aviso\">No ha indicado el año.</p>\n";
+        print "\n";
+      } elseif ($year != "2021" && $year != "2022") {
+        print "  <p class=\"aviso\">Por favor, indique el año de la reservacion.</p>\n";
+        print "\n";
+      } else {
+        $yearOk = true;
+      }
+
+      if ($comentario == "") {
+        print "  <p class=\"aviso\">No ha escrito el comentario.</p>\n";
+        print "\n";
+      } else {
+        $cometarioOk = true;
+      }
+
+      if ($nombrePersonaOk && $idDestinoOk && $idDiaOk && $mesOk && $yearOk && $comentarioOk) {
         print "  <p>El paciente ingresado es <strong>$nombrePaciente</strong>.</p>\n";
         print "\n";
-        $Doctor = "";
-        switch ($idDoctor) {
+        $Destino = "";
+        switch ($idDestino) {
           case '1':
-            $Doctor = "Eduardo González Paniagua";
+            $Destino = "Teatro Nacional";
             break;
           case '2':
-            $Doctor = "Armenia Monge Soto";
+            $Destino = "Parque Nacional Volcan Irazu";
             break;
           case '3':
-            $Doctor = "Cleimer Solis Vargas";
+            $Destino = "Parque Nacional Manuel Antonio";
             break;
           case '4':
-            $Doctor = "Andrea Rodriguez Vargas";
+            $Destino = "Parque Nacional Volcán Tenorio";
             break;
           case '5':
-            $Doctor = "José Angel Cedeño Nuñez";
+            $Destino = "Parque Nacional Tortuguero";
             break;
           default:
-            $Doctor = "No es válido";
+            $Destino = "No es válido";
             break;
         }
-        print "  <p>El Doctor seleccionado es <strong>$Doctor</strong>.</p>\n";
+        print "  <p>El Destino seleccionado es <strong>$Destino</strong>.</p>\n";
         print "\n";
 
         $dia = "";
@@ -159,6 +179,12 @@
           case '5':
             $dia = "viernes";
             break;
+          case '6':
+            $dia = "sabado";
+            break;
+          case '7':
+            $dia = "domingo";
+            break;
           default:
             $dia = "No es válido";
             break;
@@ -166,23 +192,64 @@
         print "  <p>El dia seleccionado es <strong>$dia</strong>.</p>\n";
         print "\n";
 
-        if ($hora == 10) {
-          print "  <p>La hora seleccionada fue <strong>10</strong>.</p>\n";
-        } elseif ($hora == 12) {
-          print "  <p>La hora seleccionada fue <strong>12</strong>.</p>\n";
-        } elseif ($hora == 16) {
-          print "  <p>La hora seleccionada fue <strong>16</strong>.</p>\n";
-        } elseif ($hora == 18) {
-          print "  <p>La hora seleccionada fue <strong>18</strong>.</p>\n";
+        $mes = "";
+        switch ($idMes) {
+          case '1':
+            $mes = "enero";
+            break;
+          case '2':
+            $mes  = "febrero";
+            break;
+          case '3':
+            $mes  = "marzo";
+            break;
+          case '4':
+            $mes  = "abril";
+            break;
+          case '5':
+            $mes  = "mayo";
+            break;
+          case '6':
+            $mes  = "junio";
+            break;
+          case '7':
+            $mes = "julio";
+            break;
+          case '8':
+            $mes = "agosto";
+            break;
+          case '9':
+            $mes = "septiembre";
+            break;
+          case '10':
+            $mes = "octubre";
+            break;
+          case '11':
+            $mes = "noviembre";
+            break;
+          case '12':
+            $mes = "diciembre";
+            break;
+          default:
+          $mes  = "No es válido";
+            break;
+        }
+        print "  <p>El mes seleccionado es <strong>$mes</strong>.</p>\n";
+        print "\n";
+
+        if ($year == 2021) {
+          print "  <p>El año aseleccionado fue <strong>2021</strong>.</p>\n";
+        } elseif ($year == 2022) {
+          print "  <p>El año aseleccionado fue <strong>2022</strong>.</p>\n";
         } else {
-          print "  <p> <strong>NO selecciono la hora</strong>.</p>\n";
+          print "  <p> <strong>NO selecciono el año</strong>.</p>\n";
         }
         print "\n";
 
-        print "  <p>El padecimiento a tratar es <strong>$padecimiento</strong>.</p>\n";
+        print "  <p>El comentario es <strong>$comentario</strong>.</p>\n";
 
         //Una vez validados los datos vamos a proceder a insertarlos en base de datos
-        echo InsertaDatos($nombrePaciente, $idDoctor, $idDia, $hora, $padecimiento);
+        echo InsertaDatos($nombrePersona,$apellido1,$apellido2, $cedula, $telefono, $email, $idioma, $idDestino, $idDia, $idMes, $year, $cantidad, $comentario);
       }
 
       // crear conexion con oracle
@@ -200,20 +267,21 @@
         } 
       }
 
-      function InsertaDatos($pnombrePaciente, $pidDoctor, $pidDia, $phora, $ppadecimiento)
+      function InsertaDatos($pnombrePersona, $pidDestino, $pidDia, $pidMes, $pyear, $pcomentario)
       {
         $response = "";
         $conn = Conecta();
         // prepare and bind
-        $stmt = $conn->prepare("INSERT INTO citaMedica (paciente, idDoctor, idDia, hora, padecimiento) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("siiis", $inombre, $iDoctor, $idia, $ihora, $ipadecimiento);
+        $stmt = $conn->prepare("INSERT INTO reservacion (ID_FECHA, ID_DESTINO, COD_CLIENTE, ID_CANTIDAD) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("siiis", $inombre, $iDestino, $idia, $imes, $iyear, $ipcomentario);
 
         // set parameters and execute
-        $inombre = $pnombrePaciente;
-        $iDoctor = $pidDoctor;
+        $inombre = $pnombrePersona;
+        $iDestino = $pidDestino;
         $idia = $pidDia;
-        $ihora = $phora;
-        $ipadecimiento = $ppadecimiento;
+        $imes = $pidMes;
+        $iyear = $pyear;
+        $ipcomentario= $pcomentario;
 
         $stmt->execute();
 
@@ -223,6 +291,7 @@
         $conn->close();
 
         return $response;
+
       }
 
       ?>
