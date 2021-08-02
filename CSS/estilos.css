@@ -10,11 +10,13 @@ body{
   margin: 0 auto;
   overflow: hidden;
   background-color: #333;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
 }
 .navbar a {
+  float: left;
+  display: block;
   color: #f2f2f2;
   text-align: center;
   padding: 22px 16px;
