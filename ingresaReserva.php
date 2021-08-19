@@ -249,7 +249,7 @@
         print "  <p>El comentario es <strong>$comentario</strong>.</p>\n";
 
         //Una vez validados los datos vamos a proceder a insertarlos en base de datos
-        echo InsertaDatos($nombrePersona,$apellido1,$apellido2, $cedula, $telefono, $email, $idioma, $idDestino, $idDia, $idMes, $year, $cantidad, $comentario);
+        //echo InsertaDatos($nombrePersona,$apellido1,$apellido2, $cedula, $telefono, $email, $idioma, $idDestino, $idDia, $idMes, $year, $cantidad, $comentario);
       }
 
       // crear conexion con oracle
@@ -267,14 +267,21 @@
         } 
       }
 
-      function InsertaDatos($pnombrePersona, $pidDestino, $pidDia, $pidMes, $pyear, $pcomentario)
+
+     // function ObtieneDatas ()
+
+      /*function InsertaDatos($pnombrePersona, $pidDestino, $pidDia, $pidMes, $pyear, $pcomentario)
       {
-        $response = "";
-        $conn = Conecta();
+        //$response = "";
+        //$conn = Conecta();
+
+        /*
         // prepare and bind
         $stmt = $conn->prepare("INSERT INTO reservacion (ID_FECHA, ID_DESTINO, COD_CLIENTE, ID_CANTIDAD) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("siiis", $inombre, $iDestino, $idia, $imes, $iyear, $ipcomentario);
+        */
 
+        /*
         // set parameters and execute
         $inombre = $pnombrePersona;
         $iDestino = $pidDestino;
@@ -291,10 +298,39 @@
         $conn->close();
 
         return $response;
+        */
+        /*
+        try {
+        $conexion = Conecta();
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $conexion->prepare("INSERT INTO reservacion (ID_FECHA, ID_DESTINO, COD_CLIENTE, ID_CANTIDAD) VALUES (:ID_FECHA, :ID_DESTINO, ?, ?)");
+        $stmt->bindParam(':ID_FECHA,', $idia);
+        $stmt->bindParam(':ID_DESTINO,', $iDestino);
+        $stmt->bindParam("siiis", $inombre, $iDestino, $idia, $imes, $iyear, $ipcomentario);
+        
+        // set parameters and execute
+        $inombre = $pnombrePersona;
+        $iDestino = $pidDestino;
+        $idia = $pidDia;
+        $imes = $pidMes;
+        $iyear = $pyear;
+        $ipcomentario= $pcomentario;
 
-      }
+        $stmt->execute();
+
+        echo "Reserva realizada exitosamente";
+            }
+        catch(PDOException $e)
+            {
+            echo "Error: " . $e->getMessage();
+            }
+        $conexion = null;
+      }*/
+
+
 
       ?>
+
     </div>
   </div>
 </body>
