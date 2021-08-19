@@ -70,45 +70,12 @@
 
                 </select><br />
                 <br />
-                Día:<br />
-                <select name="idDia" id="idDia" style="font-size:Medium;">
-                    <option value="1">lunes</option>
-                    <option value="2">martes</option>
-                    <option value="3">mi&#233;rcoles</option>
-                    <option value="4">jueves</option>
-                    <option value="5">viernes</option>
-                    <option value="6">Sabado</option>
-                    <option value="7">Domingo</option>
+                <label for="fecha">Fecha:</label>
 
-                </select><br />
-
+                <input type="date" id="fecha" name="trip-start"
+                    value="2021-08-19"
+                    min="2021-08-19" max="2022-12-31">
                 <br />
-                Mes:<br />
-                <select name="idMes" id="idMes" style="font-size:Medium;">
-                    <option value="1">Enero</option>
-                    <option value="2">Febrero</option>
-                    <option value="3">Marzo</option>
-                    <option value="4">Abril</option>
-                    <option value="5">Mayo</option>
-                    <option value="6">Junio</option>
-                    <option value="7">Julio</option>
-                    <option value="8">Agosto</option>
-                    <option value="9">Septiembre</option>
-                    <option value="10">Octubre</option>
-                    <option value="11">Noviembre</option>
-                    <option value="12">Diciembre</option>
-
-                </select><br />
-
-                <br />
-                A&ntilde;o: &nbsp;
-                <span id="idYear">
-                <label for="lyear2021">2021</label>
-                    <input id="year2021" type="radio" name="year" value="2021" checked="checked" />
-                <label for="lyear2022">2022</label>
-                    <input id="year2021" type="radio" name="year" value="2022" />
-                <br />
-
                 <br />
                 Idioma de Preferencia: &nbsp;
                 <span id="idIdioma">
@@ -119,8 +86,9 @@
                 <br />
                 
                 <br />
-                <label for="cantidad">Cantidad de personas:</label>
-                <input type="number" id="cantidad" name="cantidad" min="10" max="100">
+                <label for="cantidad">Cantidad (1-10):</label>
+
+                <input type="number" id="cantidad" name="cantidad" min="1" max="10">
                 <br />
                 
                 <br />

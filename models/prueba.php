@@ -13,15 +13,14 @@ class Prueba extends Conexion{
         
         oci_execute($stid);
 
-        echo "<table border='1'>\n";
         while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-        echo "<tr>\n";
+        
         foreach ($row as $item) {
-            echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "") . "</td>\n";
+            ($item !== null ? htmlentities($item, ENT_QUOTES) : "");
         }
-        echo "</tr>\n";
+        
         }
-        echo "</table>\n";
+        
         //fin select * from
         oci_close($conexion); 
     }

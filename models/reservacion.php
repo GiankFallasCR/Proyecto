@@ -32,7 +32,7 @@ class Rerseva extends Conexion{
     //$papellido = 'loco';
 
     //funcion insert de datos en el package PACK_INSERT 
-    function insertaReserva($pfecha,$pdestino, $pnombre, $papellido1, $papellido2, $pCedula, $pIdioma, $pTelefono, $pEmail, $pCantidad, $pComentario)
+    public function insertaReserva($pfecha,$pdestino, $pnombre, $papellido1, $papellido2, $pCedula, $pIdioma, $pTelefono, $pEmail, $pCantidad, $pComentario)
     {
 
         $conexion = Conexion::connectDB();

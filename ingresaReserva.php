@@ -55,9 +55,7 @@
       $email = recoge("email");
       $idioma= recoge("idioma");
       $idDestino   = recoge("idDestino");
-      $idDia        = recoge("idDia");
-      $idMes       = recoge("idMes");
-      $year         = recoge("year");
+      $idFecha = recoge("fecha");
       $cantidad = recoge("cantidad");
       $comentario       = recoge("comentario");
 
@@ -91,41 +89,14 @@
         $idDestinoOk = true;
       }
 
-      if ($idDia == "") {
+      if ($idFecha == "") {
         print "  <p class=\"aviso\">No ha seleccionado el día.</p>\n";
         print "\n";
-      } elseif (!is_numeric($idDia)) {
+      } elseif (!is_numeric($idFecha)) {
         print "  <p class=\"aviso\">El dato del día no es válido.</p>\n";
         print "\n";
-      } elseif ($idDia < 1 || $idDia > 7) {
-        print "  <p class=\"aviso\">El día es incorrecto.</p>\n";
-        print "\n";
       } else {
-        $idDiaOk = true;
-      }
-
-      if ($idMes == "") {
-        print "  <p class=\"aviso\">No ha seleccionado el mes.</p>\n";
-        print "\n";
-      } elseif (!is_numeric($idMes)) {
-        print "  <p class=\"aviso\">El dato del mes no es válido.</p>\n";
-        print "\n";
-      } elseif ($idMes < 1 || $idMes > 12) {
-        print "  <p class=\"aviso\">El mes es incorrecto.</p>\n";
-        print "\n";
-      } else {
-        $idMesOk = true;
-      }
-
-
-      if ($year == "") {
-        print "  <p class=\"aviso\">No ha indicado el año.</p>\n";
-        print "\n";
-      } elseif ($year != "2021" && $year != "2022") {
-        print "  <p class=\"aviso\">Por favor, indique el año de la reservacion.</p>\n";
-        print "\n";
-      } else {
-        $yearOk = true;
+        $idFecha = true;
       }
 
       if ($comentario == "") {
@@ -162,90 +133,6 @@
         print "  <p>El Destino seleccionado es <strong>$Destino</strong>.</p>\n";
         print "\n";
 
-        $dia = "";
-        switch ($idDia) {
-          case '1':
-            $dia = "lunes";
-            break;
-          case '2':
-            $dia = "martes";
-            break;
-          case '3':
-            $dia = "miercoles";
-            break;
-          case '4':
-            $dia = "jueves";
-            break;
-          case '5':
-            $dia = "viernes";
-            break;
-          case '6':
-            $dia = "sabado";
-            break;
-          case '7':
-            $dia = "domingo";
-            break;
-          default:
-            $dia = "No es válido";
-            break;
-        }
-        print "  <p>El dia seleccionado es <strong>$dia</strong>.</p>\n";
-        print "\n";
-
-        $mes = "";
-        switch ($idMes) {
-          case '1':
-            $mes = "enero";
-            break;
-          case '2':
-            $mes  = "febrero";
-            break;
-          case '3':
-            $mes  = "marzo";
-            break;
-          case '4':
-            $mes  = "abril";
-            break;
-          case '5':
-            $mes  = "mayo";
-            break;
-          case '6':
-            $mes  = "junio";
-            break;
-          case '7':
-            $mes = "julio";
-            break;
-          case '8':
-            $mes = "agosto";
-            break;
-          case '9':
-            $mes = "septiembre";
-            break;
-          case '10':
-            $mes = "octubre";
-            break;
-          case '11':
-            $mes = "noviembre";
-            break;
-          case '12':
-            $mes = "diciembre";
-            break;
-          default:
-          $mes  = "No es válido";
-            break;
-        }
-        print "  <p>El mes seleccionado es <strong>$mes</strong>.</p>\n";
-        print "\n";
-
-        if ($year == 2021) {
-          print "  <p>El año aseleccionado fue <strong>2021</strong>.</p>\n";
-        } elseif ($year == 2022) {
-          print "  <p>El año aseleccionado fue <strong>2022</strong>.</p>\n";
-        } else {
-          print "  <p> <strong>NO selecciono el año</strong>.</p>\n";
-        }
-        print "\n";
-
         print "  <p>El comentario es <strong>$comentario</strong>.</p>\n";
 
         //Una vez validados los datos vamos a proceder a insertarlos en base de datos
@@ -267,68 +154,52 @@
         } 
       }
 
+      function insertaReserva($pfecha,$pdestino, $pnombre, $papellido1, $papellido2, $pCedula, $pIdioma, $pTelefono, $pEmail, $pCantidad, $pComentario)
+    {
 
-     // function ObtieneDatas ()
-
-      /*function InsertaDatos($pnombrePersona, $pidDestino, $pidDia, $pidMes, $pyear, $pcomentario)
-      {
-        //$response = "";
-        //$conn = Conecta();
-
-        /*
-        // prepare and bind
-        $stmt = $conn->prepare("INSERT INTO reservacion (ID_FECHA, ID_DESTINO, COD_CLIENTE, ID_CANTIDAD) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("siiis", $inombre, $iDestino, $idia, $imes, $iyear, $ipcomentario);
-        */
-
-        /*
-        // set parameters and execute
-        $inombre = $pnombrePersona;
-        $iDestino = $pidDestino;
-        $idia = $pidDia;
-        $imes = $pidMes;
-        $iyear = $pyear;
-        $ipcomentario= $pcomentario;
-
-        $stmt->execute();
-
-        $response = "Se almaceno la cita satisfactoriamente";
-
-        $stmt->close();
-        $conn->close();
-
-        return $response;
-        */
-        /*
-        try {
         $conexion = Conecta();
-        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conexion->prepare("INSERT INTO reservacion (ID_FECHA, ID_DESTINO, COD_CLIENTE, ID_CANTIDAD) VALUES (:ID_FECHA, :ID_DESTINO, ?, ?)");
-        $stmt->bindParam(':ID_FECHA,', $idia);
-        $stmt->bindParam(':ID_DESTINO,', $iDestino);
-        $stmt->bindParam("siiis", $inombre, $iDestino, $idia, $imes, $iyear, $ipcomentario);
-        
-        // set parameters and execute
-        $inombre = $pnombrePersona;
-        $iDestino = $pidDestino;
-        $idia = $pidDia;
-        $imes = $pidMes;
-        $iyear = $pyear;
-        $ipcomentario= $pcomentario;
+        //insercion preparada Query
+        $INSERTAR = oci_parse($conexion, 
+        'EXECUTE PACK_INSERT.P_INSERT_RESERVA (to_date(:pFecha), :pDestino, :pNombre, :pApellido1, :pApellido2, :pCedula, :pIdioma, :pTelefono, :pEmail, :pCantidad, :pComentario)'
+        );
+        $fecha = $pfecha;
+        $destino = $pdestino;
+        $nombre = $pnombre;
+        $apellido1 = $papellido1;
+        $apellido2 = $papellido2;
+        $cedula = $pCedula;
+        $idioma = $pIdioma;
+        $telefono = $pTelefono;
+        $email = $pEmail;
+        $cantidad = $pCantidad;
+        $comentario = $pComentario;
+        oci_bind_by_name($INSERTAR, ':pFecha', $fecha);
+        oci_bind_by_name($INSERTAR, ':pDestino', $destino);
+        oci_bind_by_name($INSERTAR, ':pNombre', $nombre);
+        oci_bind_by_name($INSERTAR, ':pApellido1', $apellido1);
+        oci_bind_by_name($INSERTAR, ':pApellido2', $apellido2);
+        oci_bind_by_name($INSERTAR, ':pCedula', $cedula);
+        oci_bind_by_name($INSERTAR, ':pIdioma', $idioma);
+        oci_bind_by_name($INSERTAR, ':pTelefono', $telefono);
+        oci_bind_by_name($INSERTAR, ':pEmail', $email);
+        oci_bind_by_name($INSERTAR, ':pCantidad', $cantidad);
+        oci_bind_by_name($INSERTAR, ':pComentario', $comentario);
 
-        $stmt->execute();
 
-        echo "Reserva realizada exitosamente";
-            }
-        catch(PDOException $e)
-            {
-            echo "Error: " . $e->getMessage();
-            }
-        $conexion = null;
-      }*/
+        $resultado = oci_execute($INSERTAR); //commit
 
+        //valida que la insercion fue exitosa
+        if ($resultado) {
+        echo 'Insercion Exitosa';
+        }
 
+        oci_free_statement($INSERTAR); //cerrar sesion
 
+        oci_close($conexion); //cerrar conexion
+
+        //fin insersion preparada
+
+    }
       ?>
 
     </div>

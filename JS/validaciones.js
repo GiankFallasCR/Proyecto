@@ -20,25 +20,10 @@ function validaciones() {
     var idDestino= elComboDestino.options[elComboDestino.selectedIndex].value;
     var nombreDestino= elComboDestino.options[elComboDestino.selectedIndex].text;
 
-    //obtiene información del día
-    var elComboDia = document.getElementById("idDia");
-    var idDia = elComboDia.options[elComboDia.selectedIndex].value;
-    var dia = elComboDia.options[elComboDia.selectedIndex].text;
 
-    //obtiene información del mes
-    var elComboMes = document.getElementById("idMes");
-    var idMes = elComboMes.options[elComboMes.selectedIndex].value;
-    var mes = elComboMes.options[elComboMes.selectedIndex].text;
-
-    //Obtiene el year seleccionado.
-    var year = document.getElementsByName('year');
-    var valyear;
-    for (var i = 0, len = year.length; i < len; i++) {
-        if (year[i].checked) { // radio checked?
-            valyear = year[i].value; // if so, hold its value in val
-            break; // and break out of for loop
-        }
-    }
+    //obtiene informacion de la fecha
+    var dateControl = document.querySelector('input[type="date"]').value;
+    //dateControl.value = '2021-08-19';
 
     //Obtiene el idioma seleccionado.
     var idioma = document.getElementsByName('idioma');
@@ -50,8 +35,9 @@ function validaciones() {
         }
     }
 
-    //obtiene el dato del cometario
-    var cantidad = document.getElementById('cantidad').value;
+    //obtiene el dato del cantidad
+    let cantidad = document.getElementById('cantidad').value;
+
 
     //obtiene el dato del cometario
     var comentario = document.getElementById('comentario').value;
@@ -68,11 +54,7 @@ function validaciones() {
     sessionStorage.setItem("idioma", idioma);
 
     //Almacena la información del día y destino en localStorage
-    localStorage.setItem("idDia", idDia);
-    localStorage.setItem("dia", dia);
-    localStorage.setItem("idMes", idMes);
-    localStorage.setItem("mes", mes);
-    localStorage.setItem("Year", year);
+    localStorage.setItem("fecha", dateControl);
     localStorage.setItem("idDestino", idDestino);
     localStorage.setItem("nombreDestino", nombreDestino);
     localStorage.setItem("Cantidad", cantidad);
