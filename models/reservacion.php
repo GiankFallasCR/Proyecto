@@ -1,7 +1,7 @@
 <?php
     require_once "connection.php";
 
-class Prueba extends Conexion{
+class Rerseva extends Conexion{
 
     public function muestraReserva()
     {
