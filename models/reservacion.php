@@ -26,23 +26,43 @@ class Rerseva extends Conexion{
         oci_close($conexion); 
     }
     
-    /*
+    
     //asigna valor
-    $pnombre = 'Juanki';
-    $papellido = 'loco';
+    //$pnombre = 'Juanki';
+    //$papellido = 'loco';
 
-    //funciona insert de datos de la table Prueba
-    function inserta($pnombre, $papellido)
+    //funcion insert de datos en el package PACK_INSERT 
+    function insertaReserva($pfecha,$pdestino, $pnombre, $papellido1, $papellido2, $pCedula, $pIdioma, $pTelefono, $pEmail, $pCantidad, $pComentario)
     {
 
-        $conexion = connectDB();
+        $conexion = Conexion::connectDB();
         //insercion preparada Query
-        $INSERTAR = oci_parse($conexion, 'INSERT INTO prueba (nombre, apellido) values (:pnombre, :papellido)');
-
+        $INSERTAR = oci_parse($conexion, 
+        'EXECUTE PACK_INSERT.P_INSERT_RESERVA (to_date(:pFecha), :pDestino, :pNombre, :pApellido1, :pApellido2, :pCedula, :pIdioma, :pTelefono, :pEmail, :pCantidad, :pComentario)'
+        );
+        $fecha = $pfecha;
+        $destino = $pdestino;
         $nombre = $pnombre;
-        $apellido = $papellido;
-        oci_bind_by_name($INSERTAR, ':pnombre', $nombre);
-        oci_bind_by_name($INSERTAR, ':papellido', $apellido);
+        $apellido1 = $papellido1;
+        $apellido2 = $papellido2;
+        $cedula = $pCedula;
+        $idioma = $pIdioma;
+        $telefono = $pTelefono;
+        $email = $pEmail;
+        $cantidad = $pCantidad;
+        $comentario = $pComentario;
+        oci_bind_by_name($INSERTAR, ':pFecha', $fecha);
+        oci_bind_by_name($INSERTAR, ':pDestino', $destino);
+        oci_bind_by_name($INSERTAR, ':pNombre', $nombre);
+        oci_bind_by_name($INSERTAR, ':pApellido1', $apellido1);
+        oci_bind_by_name($INSERTAR, ':pApellido2', $apellido2);
+        oci_bind_by_name($INSERTAR, ':pCedula', $cedula);
+        oci_bind_by_name($INSERTAR, ':pIdioma', $idioma);
+        oci_bind_by_name($INSERTAR, ':pTelefono', $telefono);
+        oci_bind_by_name($INSERTAR, ':pEmail', $email);
+        oci_bind_by_name($INSERTAR, ':pCantidad', $cantidad);
+        oci_bind_by_name($INSERTAR, ':pComentario', $comentario);
+
 
         $resultado = oci_execute($INSERTAR); //commit
 
@@ -58,7 +78,6 @@ class Rerseva extends Conexion{
         //fin insersion preparada
 
     }
-    */
 }
 
 ?>
