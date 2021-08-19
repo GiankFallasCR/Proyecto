@@ -7,20 +7,21 @@ class Prueba extends Conexion{
     {
         
         $conexion = Conexion::connectDB();
-        $stid = oci_parse($conexion, 'SELECT * FROM prueba');
+        $stid = oci_parse($conexion, 'call p_consultaReserva()');
 
         //select * from de la table prueba
         
         oci_execute($stid);
 
+        echo "<table border='1'>\n";
         while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-        
+        echo "<tr>\n";
         foreach ($row as $item) {
-            ($item !== null ? htmlentities($item, ENT_QUOTES) : "");
+            echo "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "") . "</td>\n";
         }
-        
+        echo "</tr>\n";
         }
-        
+        echo "</table>\n";
         //fin select * from
         oci_close($conexion); 
     }

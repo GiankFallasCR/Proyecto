@@ -5,9 +5,8 @@ class Rerseva extends Conexion{
 
     public function muestraReserva()
     {
-        
         $conexion = Conexion::connectDB();
-        $stid = oci_parse($conexion, 'SELECT * FROM prueba');
+        $stid = oci_parse($conexion, 'call p_consultaReserva()');
 
         //select * from de la table prueba
         
